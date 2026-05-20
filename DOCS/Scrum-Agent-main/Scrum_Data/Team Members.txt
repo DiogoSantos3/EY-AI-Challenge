@@ -1,0 +1,44 @@
+Sofia Almeida
+Senior Product Manager with over 8 years of experience working across fintech and healthtech environments. She has led the development of digital lending platforms and patient-facing scheduling systems, giving her a strong understanding of both regulated financial products and user-centric healthcare solutions. Sofia is highly skilled in defining product vision, prioritizing features, and managing roadmaps aligned with business goals and tight deadlines. She is experienced in Agile methodologies, particularly Scrum, and excels at coordinating cross-functional teams. Her strengths include stakeholder management, decision-making under uncertainty, and ensuring that products deliver measurable value while maintaining a strong focus on user experience.
+
+Miguel Santos
+Business Analyst with 6 years of experience in banking and retail sectors. He has been involved in multiple digital transformation initiatives, focusing on translating complex business needs into clear and actionable functional requirements. Miguel is proficient in process modeling using BPMN, writing detailed user stories, and conducting gap analyses between current and future systems. He is particularly effective in facilitating communication between business stakeholders and technical teams, ensuring alignment and reducing ambiguity. His analytical mindset and structured approach make him a key contributor in early project phases.
+
+Ana Costa
+Business Analyst specializing in healthcare systems, with 5 years of experience working on hospital and clinical platforms. She has deep knowledge of clinical workflows, patient journeys, and healthcare-specific requirements. Ana is experienced in documenting functional specifications and aligning them with both regulatory constraints and user needs. She also has a basic understanding of interoperability standards, which allows her to collaborate effectively on integration-heavy systems. Her main strength lies in bridging the gap between medical professionals and technical teams.
+
+João Ferreira
+Backend Developer with 7 years of experience building secure and scalable systems in the financial sector. He has extensive experience using Java and Spring Boot to develop RESTful APIs and backend services. João is also well-versed in authentication and authorization mechanisms, including OAuth2, ensuring that applications meet strict security requirements. He is known for writing clean, maintainable code and for his ability to design robust architectures that handle high volumes of transactions reliably.
+
+Inês Martins
+Frontend Developer with 5 years of experience in SaaS platforms. She specializes in building modern web applications using React and TypeScript, with a focus on performance and usability. Inês has experience developing data-heavy dashboards and visualizations, making complex information easy to understand for users. She is detail-oriented and places strong emphasis on responsive design and smooth user interactions.
+
+Carla Sousa
+Frontend Developer with 4 years of experience in both web and mobile applications. She works primarily with Vue.js and has a strong understanding of responsive design and accessibility standards. Carla is passionate about creating intuitive user interfaces that provide a seamless experience across devices. She pays close attention to usability and ensures that applications are accessible to a wide range of users.
+
+Tiago Fernandes
+Data Scientist with 7 years of experience in the banking sector. He specializes in developing risk models and credit scoring systems using statistical methods and machine learning techniques. Tiago is highly proficient in Python and libraries such as scikit-learn, and has a strong foundation in data analysis and predictive modeling. He is particularly skilled at translating business problems into data-driven solutions.
+
+Beatriz Gomes
+Data Scientist with 6 years of experience in retail analytics. She focuses on demand forecasting, time series analysis, and inventory optimization. Beatriz has worked on projects that aim to reduce stockouts and overstock situations by leveraging historical sales data. She is highly analytical and excels at identifying trends and patterns that can inform better business decisions.
+
+Luís Teixeira
+Machine Learning Engineer with 5 years of experience in healthtech. He has worked on projects involving natural language processing, particularly in the classification of patient symptoms. Luís is experienced in deploying machine learning models into production environments, using MLOps practices to ensure reliability and scalability. He bridges the gap between data science and engineering.
+
+Marta Carvalho
+Data Engineer with 6 years of experience in retail environments. She specializes in building and maintaining ETL pipelines that process large volumes of data efficiently. Marta is experienced with tools such as Spark and works with both SQL and NoSQL databases. She ensures that data is clean, consistent, and readily available for analytics and machine learning purposes.
+
+Rita Marques
+UX/UI Designer with 6 years of experience designing digital products. She is highly skilled in user-centered design methodologies and uses tools like Figma to create prototypes and design systems. Rita focuses on simplifying complex user journeys and ensuring that interfaces are intuitive and visually appealing. She often conducts usability testing to validate design decisions.
+
+Hugo Silva
+DevOps Engineer with 7 years of experience working in cloud-based environments. He has strong expertise in AWS and Azure, as well as in CI/CD pipelines, Docker, and Kubernetes. Hugo is responsible for automating deployment processes and ensuring that systems are scalable, reliable, and easy to maintain. He also implements monitoring solutions to quickly detect and resolve issues.
+
+Teresa Rocha
+Compliance Specialist with 9 years of experience in the banking sector. She has in-depth knowledge of financial regulations, auditing processes, and data protection laws such as GDPR. Teresa ensures that systems and processes comply with regulatory requirements and helps mitigate risks related to non-compliance. She works closely with both business and technical teams.
+
+Nuno Figueiredo
+Security Engineer with 8 years of experience in cybersecurity. He specializes in protecting applications and data through encryption, identity and access management, and security testing. Nuno conducts vulnerability assessments and implements best practices to prevent security breaches. His work is critical in safeguarding sensitive information.
+
+Dr. Paulo Mendes
+Healthcare Specialist with 12 years of experience as a practicing physician and clinical manager. He has extensive knowledge of patient triage processes, clinical decision-making, and hospital operations. Paulo provides valuable insights into real-world healthcare practices and ensures that digital solutions align with medical standards and improve patient outcomes.
