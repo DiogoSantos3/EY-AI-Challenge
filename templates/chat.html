@@ -189,7 +189,7 @@
     <h1>Scrum AI Agent</h1>
     <nav>
       <a href="{{ url_for('chat') }}" class="active">💬 Chat</a>
-      <a href="{{ url_for('dashboard') }}">📊 Dashboard</a>
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
     </nav>
   </header>
 
@@ -206,14 +206,14 @@
       {% endwith %}
 
       <form class="input-area" id="chatForm">
-        <input type="text" id="chatMessage" placeholder="Descreve o teu projeto..." autocomplete="off">
+        <input type="text" id="chatMessage" placeholder="o que queres fazer hoje?" autocomplete="off">
         <button type="submit" class="send-btn">Enviar</button>
       </form>
 
       <form method="post" action="{{ url_for('upload_pdf') }}" enctype="multipart/form-data" class="upload-row">
         <label>📄</label>
         <input type="file" id="project_pdf" name="project_pdf" accept="application/pdf">
-        <button type="submit">Carregar PDF</button>
+        <button type="submit">Adicionar PDF</button>
       </form>
     </div>
   </main>
