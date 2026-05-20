@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scrum AI Agent - Conversation</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="bg-aurora">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">S</div>
+      <div>
+        <div class="brand-title">Scrum AI Agent</div>
+        <div class="brand-subtitle">Project planning copilot</div>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a class="active" href="{{ url_for('chat') }}">Conversation</a>
+      <a href="{{ url_for('dashboard') }}">Planning Dashboard</a>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="panel chat-panel">
+      <div class="panel-header">
+        <h1>Conversation and PDF intake</h1>
+        <p>Describe the product, attach the PDF, and ask the agent to build stories and tasks.</p>
+      </div>
+
+      <div class="chat-window" id="chatWindow">
+        <div class="bubble agent">
+          <div class="bubble-title">Scrum Agent</div>
+          <p>Share the project description or upload the PDF to start generating user stories.</p>
+        </div>
+        <div class="bubble user">
+          <div class="bubble-title">You</div>
+          <p>We need a client onboarding portal with roles and audit trails.</p>
+        </div>
+        <div class="bubble agent">
+          <div class="bubble-title">Scrum Agent</div>
+          <p>Great. Upload the PDF and I will draft the backlog, tasks, and sprint proposal.</p>
+        </div>
+      </div>
+
+      <form class="chat-input" id="chatForm">
+        <input type="text" id="chatMessage" placeholder="Type your message to the agent">
+        <button type="submit">Send</button>
+      </form>
+    </section>
+
+    <aside class="panel side-panel">
+      <div class="panel-header">
+        <h2>Project description</h2>
+        <p>PDF intake and quick status updates.</p>
+      </div>
+
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <div class="flash">
+        {% for message in messages %}
+        <span>{{ message }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% endwith %}
+
+      <form class="upload-card" method="post" action="{{ url_for('upload_pdf') }}" enctype="multipart/form-data">
+        <label for="project_pdf">Upload project PDF</label>
+        <input type="file" id="project_pdf" name="project_pdf" accept="application/pdf">
+        <button type="submit">Submit PDF</button>
+      </form>
+
+      <div class="status-card">
+        <h3>Agent status</h3>
+        <ul>
+          <li>Stories drafted: 12</li>
+          <li>Tasks estimated: 34</li>
+          <li>Open questions: 4</li>
+        </ul>
+      </div>
+
+      <div class="status-card">
+        <h3>Next suggestions</h3>
+        <ul>
+          <li>Confirm roles and permissions</li>
+          <li>Approve sprint capacity</li>
+          <li>Validate integrations list</li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>

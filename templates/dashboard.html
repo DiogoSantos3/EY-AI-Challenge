@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scrum AI Agent - Planning</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="bg-orbit">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">S</div>
+      <div>
+        <div class="brand-title">Scrum AI Agent</div>
+        <div class="brand-subtitle">Sprint planning control room</div>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="{{ url_for('chat') }}">Conversation</a>
+      <a class="active" href="{{ url_for('dashboard') }}">Planning Dashboard</a>
+    </nav>
+  </header>
+
+  <main class="shell dashboard-shell">
+    <section class="panel metrics-panel">
+      <div class="panel-header">
+        <h1>Planning metrics</h1>
+        <p>Velocity, capacity, and risk signals from the current backlog.</p>
+      </div>
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <span>Velocity</span>
+          <strong id="velocityValue">24 pts</strong>
+          <small>Avg last 3 sprints</small>
+        </div>
+        <div class="metric-card">
+          <span>Capacity</span>
+          <strong id="capacityValue">5.5 FTE</strong>
+          <small>Current sprint team</small>
+        </div>
+        <div class="metric-card">
+          <span>Risk items</span>
+          <strong id="riskValue">3</strong>
+          <small>Blocked or unclear</small>
+        </div>
+        <div class="metric-card">
+          <span>Goal coverage</span>
+          <strong id="coverageValue">68%</strong>
+          <small>Stories mapped to goals</small>
+        </div>
+      </div>
+      <div class="charts-grid">
+        <div class="chart-card">
+          <h3>Burndown</h3>
+          <canvas id="burndownCanvas" width="420" height="200"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>Capacity by assignee</h3>
+          <canvas id="capacityCanvas" width="420" height="200"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel sprint-panel">
+      <div class="panel-header row">
+        <div>
+          <h2>Sprints and backlog</h2>
+          <p>Edit sprint details and tasks inline. Changes are saved locally.</p>
+        </div>
+        <button id="addSprint" class="ghost">Add sprint</button>
+      </div>
+      <div id="sprintList" class="sprint-list"></div>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
