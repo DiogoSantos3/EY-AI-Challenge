@@ -3,218 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dashboard - Scrum AI Agent</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #f9f9f9;
-      min-height: 100vh;
-    }
-
-    header {
-      background: white;
-      padding: 12px 20px;
-      border-bottom: 1px solid #e0e0e0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    h1 {
-      font-size: 18px;
-      color: #333;
-      font-weight: 600;
-    }
-
-    nav {
-      display: flex;
-      gap: 16px;
-    }
-
-    nav a {
-      padding: 6px 12px;
-      text-decoration: none;
-      color: #666;
-      border-radius: 6px;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-    }
-
-    nav a:hover {
-      background: #f0f0f0;
-    }
-
-    nav a.active {
-      color: #2563eb;
-      background: #eff6ff;
-    }
-
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 12px;
-    }
-
-    .metric-card {
-      background: white;
-      padding: 16px;
-      border-radius: 8px;
-      border: 1px solid #e0e0e0;
-    }
-
-    .metric-label {
-      font-size: 11px;
-      color: #999;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 6px;
-    }
-
-    .metric-value {
-      font-size: 28px;
-      font-weight: 700;
-      color: #2563eb;
-    }
-
-    .sprints-section {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .sprints-header {
-      font-size: 14px;
-      font-weight: 600;
-      color: #333;
-    }
-
-    .sprint-card {
-      background: white;
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .sprint-header {
-      padding: 12px 16px;
-      background: #f9f9f9;
-      border-bottom: 1px solid #e0e0e0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .sprint-title {
-      font-weight: 600;
-      font-size: 14px;
-      color: #333;
-    }
-
-    .sprint-meta {
-      display: flex;
-      gap: 16px;
-      font-size: 12px;
-      color: #666;
-    }
-
-    .tasks-list {
-      padding: 0;
-    }
-
-    .task-item {
-      padding: 12px 16px;
-      border-bottom: 1px solid #f0f0f0;
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-    }
-
-    .task-item:last-child {
-      border-bottom: none;
-    }
-
-    .task-checkbox {
-      width: 16px;
-      height: 16px;
-      margin-top: 3px;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-
-    .task-info {
-      flex: 1;
-    }
-
-    .task-title {
-      font-size: 13px;
-      font-weight: 500;
-      color: #333;
-      margin-bottom: 4px;
-    }
-
-    .task-details {
-      display: flex;
-      gap: 8px;
-      font-size: 11px;
-      color: #999;
-    }
-
-    .task-badge {
-      background: #f0f0f0;
-      color: #666;
-      padding: 2px 6px;
-      border-radius: 3px;
-      font-weight: 500;
-    }
-
-    .task-status {
-      background: #dbeafe;
-      color: #1e40af;
-      padding: 2px 6px;
-      border-radius: 3px;
-      font-weight: 500;
-    }
-
-    .empty-state {
-      text-align: center;
-      padding: 60px 20px;
-      color: #999;
-      background: white;
-      border-radius: 8px;
-      border: 1px solid #e0e0e0;
-    }
-
-    .empty-state p {
-      font-size: 14px;
-    }
-  </style>
+  <title>Matchboard - Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
   <header>
-    <h1>Scrum AI Agent</h1>
-    <nav>
-      <a href="{{ url_for('chat') }}">💬 Chat</a>
-      <a href="{{ url_for('dashboard') }}" class="active">📊 Dashboard</a>
-    </nav>
+    <div class="header-inner">
+      <div class="brand">
+        <h1>Matchboard</h1>
+        <span class="brand-tagline">Your AI Scrum Companion</span>
+      </div>
+      <nav>
+        <a href="{{ url_for('chat') }}">Chat</a>
+        <a href="{{ url_for('dashboard') }}" class="active">Dashboard</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
+  <main class="dashboard">
     <!-- Métricas -->
     <div class="metrics-grid">
       <div class="metric-card">
@@ -237,10 +43,10 @@
 
     <!-- Sprints -->
     <div class="sprints-section">
-      <div class="sprints-header">📋 Sprints e Backlogs</div>
+      <div class="sprints-header">Sprints and Backlogs</div>
       <div id="sprintsList">
         <div class="empty-state">
-          <p>Nenhum sprint gerado ainda. Envia um projeto no chat para começar! 🚀</p>
+          <p>No sprint generated today. Send a project in the chat to get started!</p>
         </div>
       </div>
     </div>
