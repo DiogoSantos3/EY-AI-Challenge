@@ -1,221 +1,114 @@
 <!doctype html>
-<html lang="pt">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Scrum AI Agent</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #fff;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    header {
-      background: white;
-      padding: 12px 20px;
-      border-bottom: 1px solid #e0e0e0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    h1 {
-      font-size: 18px;
-      color: #333;
-      font-weight: 600;
-    }
-
-    nav {
-      display: flex;
-      gap: 16px;
-    }
-
-    nav a {
-      padding: 6px 12px;
-      text-decoration: none;
-      color: #666;
-      border-radius: 6px;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-    }
-
-    nav a:hover {
-      background: #f0f0f0;
-    }
-
-    nav a.active {
-      color: #2563eb;
-      background: #eff6ff;
-    }
-
-    main {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      overflow: hidden;
-      padding: 0;
-    }
-
-    .chat-window {
-      flex: 1;
-      overflow-y: auto;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .message {
-      padding: 10px 14px;
-      border-radius: 10px;
-      max-width: 70%;
-      word-wrap: break-word;
-      font-size: 14px;
-      line-height: 1.4;
-    }
-
-    .message.agent {
-      background: #f0f0f0;
-      align-self: flex-start;
-      color: #333;
-    }
-
-    .message.user {
-      background: #2563eb;
-      color: white;
-      align-self: flex-end;
-    }
-
-    .input-section {
-      border-top: 1px solid #e0e0e0;
-      padding: 16px 20px;
-      background: white;
-    }
-
-    .input-area {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
-    input[type="text"] {
-      flex: 1;
-      padding: 10px 14px;
-      border: 1px solid #ddd;
-      border-radius: 20px;
-      font-size: 14px;
-      background: #f9f9f9;
-    }
-
-    input[type="text"]:focus {
-      outline: none;
-      border-color: #2563eb;
-      background: white;
-    }
-
-    .send-btn {
-      padding: 8px 16px;
-      background: #2563eb;
-      color: white;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: 500;
-      font-size: 13px;
-      min-width: 60px;
-    }
-
-    .send-btn:hover {
-      background: #1d4ed8;
-    }
-
-    .upload-row {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      font-size: 13px;
-    }
-
-    .upload-row label {
-      color: #666;
-      font-weight: 500;
-      min-width: fit-content;
-    }
-
-    input[type="file"] {
-      font-size: 12px;
-      flex: 1;
-    }
-
-    .upload-row button {
-      padding: 6px 12px;
-      background: #f0f0f0;
-      color: #333;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 12px;
-      white-space: nowrap;
-      font-weight: 500;
-    }
-
-    .upload-row button:hover {
-      background: #e0e0e0;
-    }
-
-    .flash {
-      padding: 8px 12px;
-      background: #dcfce7;
-      border: 1px solid #86efac;
-      border-radius: 6px;
-      color: #166534;
-      font-size: 12px;
-      margin-bottom: 8px;
-    }
-  </style>
+  <title>ScrumBot — AI Scrum Master</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-<body>
-  <header>
-    <h1>Scrum AI Agent</h1>
-    <nav>
-      <a href="{{ url_for('chat') }}" class="active">💬 Chat</a>
-      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+<body class="bg-aurora">
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">S</div>
+      <div>
+        <div class="brand-title">ScrumBot</div>
+        <div class="brand-subtitle">AI-powered Scrum Master</div>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a class="active" href="/">Conversation</a>
+      <a href="/dashboard">Planning Dashboard</a>
     </nav>
   </header>
 
-  <main>
-    <div class="chat-window" id="chatWindow"></div>
+  <main class="shell">
 
-    <div class="input-section">
-      {% with messages = get_flashed_messages() %}
-      {% if messages %}
-      {% for message in messages %}
-      <div class="flash">{{ message }}</div>
-      {% endfor %}
-      {% endif %}
-      {% endwith %}
+    <!-- ── Chat panel ──────────────────────────────────────────────────────── -->
+    <section class="panel chat-panel">
+      <div class="panel-header">
+        <h1>Conversation</h1>
+        <p>Select a project, then ask ScrumBot anything — or generate a full sprint plan instantly.</p>
+      </div>
 
-      <form class="input-area" id="chatForm">
-        <input type="text" id="chatMessage" placeholder="o que queres fazer hoje?" autocomplete="off">
-        <button type="submit" class="send-btn">Enviar</button>
+      <div class="chat-window" id="chatWindow">
+        <div class="bubble agent">
+          <div class="bubble-label">ScrumBot</div>
+          <div class="bubble-content">
+            👋 Hello! I'm <strong>ScrumBot</strong>, your AI-powered Scrum Master.<br><br>
+            Select a project from the sidebar, then ask me to:
+            <ul class="welcome-list">
+              <li>Generate user stories and epics</li>
+              <li>Create a full sprint plan with team assignments</li>
+              <li>Identify risks and dependencies</li>
+              <li>Answer any Agile or Scrum question</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <form class="chat-input-row" id="chatForm">
+        <input
+          type="text"
+          id="chatMessage"
+          placeholder="Ask ScrumBot anything about your project…"
+          autocomplete="off"
+        >
+        <button type="submit" id="sendBtn" class="send-btn">Send</button>
       </form>
+    </section>
 
-      <form method="post" action="{{ url_for('upload_pdf') }}" enctype="multipart/form-data" class="upload-row">
-        <label>📄</label>
-        <input type="file" id="project_pdf" name="project_pdf" accept="application/pdf">
-        <button type="submit">Adicionar PDF</button>
-      </form>
-    </div>
+    <!-- ── Sidebar ─────────────────────────────────────────────────────────── -->
+    <aside class="side-col">
+
+      <!-- Project selector -->
+      <div class="panel side-block">
+        <h2 class="side-heading">Project</h2>
+        <select id="projectSelect" class="full-select">
+          <option value="">— Select a project —</option>
+        </select>
+        <button id="generateBtn" class="cta-btn mt-10" disabled>
+          ⚡ Generate Sprint Plan
+        </button>
+        <div id="planReady" class="plan-ready-banner" style="display:none">
+          ✅ Plan ready —
+          <a id="dashLink" href="/dashboard">view dashboard →</a>
+        </div>
+      </div>
+
+      <!-- Quick prompts -->
+      <div class="panel side-block">
+        <h3 class="side-heading">Quick prompts</h3>
+        <div class="chip-grid">
+          <button class="chip" data-prompt="What are the main epics for this project?">Main epics</button>
+          <button class="chip" data-prompt="Who on the team should handle the backend work?">Team allocation</button>
+          <button class="chip" data-prompt="What are the biggest risks and blockers for this project?">Risk analysis</button>
+          <button class="chip" data-prompt="How many 2-week sprints will this project require?">Sprint estimate</button>
+          <button class="chip" data-prompt="Write the first three user stories with acceptance criteria.">User stories</button>
+          <button class="chip" data-prompt="What should the Definition of Done look like for this project?">Definition of Done</button>
+          <button class="chip" data-prompt="Identify all external dependencies in this project.">Dependencies</button>
+          <button class="chip" data-prompt="What is the recommended team composition for this project?">Team composition</button>
+        </div>
+      </div>
+
+      <!-- Upload PDF -->
+      <div class="panel side-block">
+        <h3 class="side-heading">Upload your own PDF</h3>
+        <form id="uploadForm" class="upload-row">
+          <input type="file" id="project_pdf" name="project_pdf" accept="application/pdf" class="file-input">
+          <button type="submit" class="ghost-sm">Upload</button>
+        </form>
+      </div>
+
+      <!-- Agent status -->
+      <div class="panel side-block">
+        <h3 class="side-heading">Agent status</h3>
+        <div id="agentStatus" class="status-row">
+          <span class="status-dot pulse"></span> Connecting…
+        </div>
+      </div>
+
+    </aside>
   </main>
 
   <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
